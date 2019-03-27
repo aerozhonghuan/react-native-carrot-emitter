@@ -1,0 +1,43 @@
+{
+  "name": "react-native-carrot-emitter",
+  "version": "1.0.0",
+  "description": "原生与RN之间的通信",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint-fix": "npx eslint --fix .",
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "react-native",
+    "emitter"
+  ],
+  "author": {
+    "name": "LP",
+    "email": "wangjinzhi@aerozhonghuan.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@https://github.com/LittlePig1/react-native-app-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LittlePig1/react-native-app-test/issues"
+  },
+  "peerDependencies": {
+    "prop-types": ">=15.6.2",
+    "react": ">=16.5.0",
+    "react-native": ">=0.57.1"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "24.1.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "metro-react-native-babel-preset": "0.46.0"
+  }
+}
