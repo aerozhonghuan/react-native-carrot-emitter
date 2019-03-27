@@ -8,6 +8,7 @@
 #import "RNCarrotEmitter.h"
 #import <Foundation/Foundation.h>
 #import "RNListenerManager.h"
+#import "RNNotificationManager.h"
 
 @implementation RNCarrotEmitter
 
@@ -27,7 +28,7 @@ RCT_EXPORT_METHOD(notification:(NSString *)name notificationInfo:(NSDictionary *
  * 将消息的名称通过 RCTEventEmitter类的startObserving注册进去
  */
 RCT_EXPORT_METHOD(notificationName:(NSString *)name){
-    NativeNotificationManager *manager = [NativeNotificationManager shareNotification];
+    RNNotificationManager *manager = [NativeNotificationManager shareNotification];
     manager.CurrentListenerName = name;
     
     if(![manager.ListenerNameArr containsObject:name]) {
@@ -45,7 +46,7 @@ RCT_EXPORT_METHOD(notificationName:(NSString *)name){
  * 将消息的名称通过 RCTEventEmitter类的stopObserving移除出去
  */
 RCT_EXPORT_METHOD(removeNotificationName:(NSString *)name){
-    NativeNotificationManager *manager = [NativeNotificationManager shareNotification];
+    RNNotificationManager *manager = [NativeNotificationManager shareNotification];
     manager.CurrentRemoveListenerName = nil;
 }
 @end
