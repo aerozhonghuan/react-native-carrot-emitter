@@ -19,10 +19,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@https://github.com/LittlePig1/react-native-app-test.git"
+    "url": "git@github.com:aerozhonghuan/react-native-carrot-emitter.git"
   },
   "bugs": {
-    "url": "https://github.com/LittlePig1/react-native-app-test/issues"
+    "url": "https://github.com/aerozhonghuan/react-native-carrot-emitter/issues"
   },
   "peerDependencies": {
     "prop-types": ">=15.6.2",
