@@ -36,49 +36,46 @@
 
 
 ## Usage
-```javascript
-import RNCarrotEmitter from 'react-native-carrot-emitter';
-
-// TODO: What to do with the module?
-RNCarrotEmitter;
 ### 关于react-native-carrot-emitter
 #### API
-| 方法名 | 参数 | 描述 |
+| 方法名（native方法都是用于跨原生容器使用） | 参数 | 描述 |
 |:-----:|:------:|:-----:|
 | addNativeListener | name: string, listenerResult: (param?: any) => void | RN端添加监听 |
 | removeNativeListener | name: string | RN端移除监听 |
 | nativeEmit | name: string, params?:string | RN端发送监听内容|
-
+| addRNListener | name: string, listenerResult: (param?: any) => void | RN端添加监听 |
+| removeRNListener |  | RN端移除监听 |
+| RNEmit | name: string, params?:string | RN端发送监听内容|
 #### Detail
 ```
 import CarrotEmitter from 'react-native-carrot-emitter';
 监听页 ------- iOS 跨容器
 componentDidMount() {
-    CarrotEmitter.addNativeListener('changeInfo', (param) => {
-      console.log(`通知${param.key}`);
-      if (param.key === 'nameChange') {
-        this.setState({
-          name: param.info,
-        });
-      }
-      if (param.key === 'phoneChange') {
-        this.setState({
-          phone: param.info,
-        });
-      }
-    });
-  }
+CarrotEmitter.addNativeListener('changeInfo', (param) => {
+console.log(`通知${param.key}`);
+if (param.key === 'nameChange') {
+this.setState({
+name: param.info,
+});
+}
+if (param.key === 'phoneChange') {
+this.setState({
+phone: param.info,
+});
+}
+});
+}
 
-  componentWillUnmount() {
-    CarrotEmitter.removeNativeListener('changeInfo');
-  }
-  监听页 ------- iOS 跨容器
+componentWillUnmount() {
+CarrotEmitter.removeNativeListener('changeInfo');
+}
+监听页 ------- iOS 跨容器
 
-  发送页 ------- iOS 跨容器
-  import CarrotEmitter from 'react-native-carrot-emitter';
-            CarrotEmitter.nativeEmit('changeInfo', { key: 'nameChange', info: name });
-  发送页 ------- iOS 跨容器
+发送页 ------- iOS 跨容器
+import CarrotEmitter from 'react-native-carrot-emitter';
+CarrotEmitter.nativeEmit('changeInfo', { key: 'nameChange', info: name });
+发送页 ------- iOS 跨容器
 
-  如果是rn容器间的消息传递 则使用 对应的 RN方法（addRNListener、removeRNListener、RNEmit）
+如果是rn容器间的消息传递 则使用 对应的 RN方法（addRNListener、removeRNListener、RNEmit）
 ```
   
