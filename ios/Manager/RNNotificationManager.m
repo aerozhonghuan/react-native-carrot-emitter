@@ -3,7 +3,7 @@
 //  RNCarrotEmitter
 //
 //  Created by 王金志 on 2019/3/27.
-//  Copyright © 2019 Facebook. All rights reserved.
+//  Copyright © 2019 LP. All rights reserved.
 //
 
 #import "RNNotificationManager.h"
