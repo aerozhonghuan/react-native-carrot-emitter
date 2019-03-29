@@ -34,48 +34,53 @@
       compile project(':react-native-carrot-emitter')
   	```
 
+## API
+| 方法名（js端调用，带有native方法为跨原生容器时调用） | 参数 | 描述 |
+|:-----:|:------:|:-----:|
+| addNativeListener | name: string, listenerResult: (param?: any) => void | JS端添加监听 |
+| removeNativeListener | name: string | JS端移除监听 |
+| nativeEmit | name: string, params?:string | JS端发送监听内容|
+| addRNListener | name: string, listenerResult: (param?: any) => void | JS端添加监听 |
+| removeRNListener |  | JS端移除监听 |
+| RNEmit | name: string, params?:string | JS端发送监听内容|
+
+| 方法名（iOS或andriod原生端调用） | 参数 | 描述 |
+|:-----:|:------:|:-----:|
+| OCsendMessage | dictionary（字典里必须带有name：" " 声明监听名的键值对） | iOS端发送消息 |
+| postEventToJS | context: ReactContext, event: String | andriod端发送消息 |
 
 ## Usage
-### 关于react-native-carrot-emitter
-#### API
-| 方法名（native方法都是用于跨原生容器使用） | 参数 | 描述 |
-|:-----:|:------:|:-----:|
-| addNativeListener | name: string, listenerResult: (param?: any) => void | RN端添加监听 |
-| removeNativeListener | name: string | RN端移除监听 |
-| nativeEmit | name: string, params?:string | RN端发送监听内容|
-| addRNListener | name: string, listenerResult: (param?: any) => void | RN端添加监听 |
-| removeRNListener |  | RN端移除监听 |
-| RNEmit | name: string, params?:string | RN端发送监听内容|
-#### Detail
-```
+
+``` javascript
 import CarrotEmitter from 'react-native-carrot-emitter';
-监听页 ------- iOS 跨容器
+// 添加监听
 componentDidMount() {
-CarrotEmitter.addNativeListener('changeInfo', (param) => {
-console.log(`通知${param.key}`);
-if (param.key === 'nameChange') {
-this.setState({
-name: param.info,
-});
+  CarrotEmitter.addNativeListener('changeInfo', (param) => {
+      if (param.key === 'nameChange') {
+         this.setState({
+           name: param.info,
+       });
+      }
+   }
 }
-if (param.key === 'phoneChange') {
-this.setState({
-phone: param.info,
-});
-}
-});
-}
-
+// 移除监听
 componentWillUnmount() {
-CarrotEmitter.removeNativeListener('changeInfo');
+  CarrotEmitter.removeNativeListener('changeInfo');
 }
-监听页 ------- iOS 跨容器
 
-发送页 ------- iOS 跨容器
+
+// 发送监听
 import CarrotEmitter from 'react-native-carrot-emitter';
 CarrotEmitter.nativeEmit('changeInfo', { key: 'nameChange', info: name });
-发送页 ------- iOS 跨容器
+
 
 如果是rn容器间的消息传递 则使用 对应的 RN方法（addRNListener、removeRNListener、RNEmit）
 ```
+### iOS端给js发送消息
+* 1 `#import "RNListenerManager.h"`
+* 2 `[RNListenerManager OCsendMessage:@{@"info":@"", @"name":@"refreshHome"}];`
+
+### android端给js发送消息
+调用`postEventToJS`
+方法名：`public void postEventToJS(ReactContext context, String event)`
   

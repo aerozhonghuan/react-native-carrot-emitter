@@ -19,4 +19,10 @@ public class RNCarrotEmitterModule extends ReactContextBaseJavaModule {
   public String getName() {
     return "RNCarrotEmitter";
   }
+
+  public void postEventToJS(ReactContext context, String event) {
+    context.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+            .emit(event, null);
+  }
+
 }
