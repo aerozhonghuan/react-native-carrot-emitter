@@ -1,4 +1,7 @@
 ### Changelog
+####v1.0.5
+* fix andriod error
+
 ####v1.0.4
 * fix andriod gradle setting
 * add location func to emit js messge
