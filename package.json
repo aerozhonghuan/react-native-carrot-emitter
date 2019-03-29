@@ -1,6 +1,6 @@
 {
   "name": "react-native-carrot-emitter",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "原生与RN之间的通信",
   "main": "index.js",
   "scripts": {
