@@ -1,4 +1,8 @@
 ### Changelog
+
+####v1.0.6   date: 2019-04-15
+* fix andriod error
+
 ####v1.0.5
 * fix andriod error
 

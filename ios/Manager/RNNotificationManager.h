@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *CurrentListenerName;
 // 当前需要移除监听的名称
 @property (nonatomic, copy, nullable) NSString *CurrentRemoveListenerName;
-// 当前已经村在的监听
+// 需要注册到supportedEvents中的通知
 @property (nonatomic, strong, nullable) NSMutableArray *ListenerNameArr;
 
 @end

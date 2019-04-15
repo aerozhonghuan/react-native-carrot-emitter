@@ -62,8 +62,8 @@ RCT_EXPORT_METHOD(removeNotificationName:(NSString *)name){
         // 判断传入的是否为空name
         RNNotificationManager *manager = [RNNotificationManager shareNotification];
         manager.CurrentRemoveListenerName = name;
-        if(![manager.ListenerNameArr containsObject:name]) {
-            // 如果本地不存在 则 添加
+        if([manager.ListenerNameArr containsObject:name]) {
+            // 如果本地存在 则 移除将要移除的注册通知
             [manager.ListenerNameArr removeObject:name];
         }
     } else {
